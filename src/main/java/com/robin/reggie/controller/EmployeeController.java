@@ -41,6 +41,7 @@ public class EmployeeController {
         //2.根据页面提交的用户名查询数据库
         LambdaQueryWrapper<Employee> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Employee::getUsername,employee.getUsername());
+
         Employee emp =  employeeService.getOne(queryWrapper);
         return null;
     }
