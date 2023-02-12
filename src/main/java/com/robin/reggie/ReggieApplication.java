@@ -1,8 +1,13 @@
 package com.robin.reggie;
 
+import com.robin.reggie.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+
 
 @Slf4j
 @SpringBootApplication
@@ -12,5 +17,4 @@ public class ReggieApplication {
         SpringApplication.run(ReggieApplication.class, args);
         log.info("项目启动成功....");
     }
-
 }

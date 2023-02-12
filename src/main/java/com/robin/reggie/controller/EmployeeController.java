@@ -42,6 +42,21 @@ public class EmployeeController {
         LambdaQueryWrapper<Employee> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Employee::getUsername,employee.getUsername());
         Employee emp =  employeeService.getOne(queryWrapper);
-        return null;
+
+        //3.如果没有查询到则返回登陆失败结果
+        if(emp == null){
+            return R.error("登陆失败");
+        }
+        //4.密码比对，如果不一致则返回登陆失败结果
+        if(!emp.getPassword().equals(password)){
+            return R.error("登陆失败");
+        }
+        //5.查看员工状态，如果已禁用则返回员工已禁用
+        if(emp.getStatus() == 0){
+            return R.error("账号已禁用");
+        }
+        //6.登陆成功，将员工id放入session
+        request.getSession().setAttribute("employee",emp.getId());
+        return R.success(emp);
     }
 }
