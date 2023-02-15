@@ -13,9 +13,6 @@ else
 fi
 
 	
-<<<<<<< HEAD
-git push -u origin main
-=======
 git push origin main
->>>>>>> e077336475639a7dcb484649897383f662b044d1
+
 echo "GitAutoPush Ending..."
