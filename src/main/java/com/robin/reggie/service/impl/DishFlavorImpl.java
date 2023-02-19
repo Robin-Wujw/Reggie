@@ -13,4 +13,5 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 public class DishFlavorImpl extends ServiceImpl<DishFlavorMapper, DishFlavor> implements DishFlavorService {
+
 }
