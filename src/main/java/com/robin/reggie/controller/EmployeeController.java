@@ -8,6 +8,7 @@ import com.robin.reggie.service.EmployeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -120,13 +121,14 @@ public class EmployeeController {
      * @param employee
      * @return
      */
+
     @PutMapping
     public R<String> update(HttpServletRequest request, @RequestBody Employee employee){
         log.info(employee.toString());
         employee.setUpdateTime(LocalDateTime.now());
-//        Long empId =(Long)request.getSession().getAttribute("employee");
-//        employee.setUpdateUser(empId);
-//        employeeService.updateById(employee);
+        Long empId =(Long)request.getSession().getAttribute("employee");
+        employee.setUpdateUser(empId);
+        employeeService.updateById(employee);
         return R.success("员工信息修改成功");
     }
 
